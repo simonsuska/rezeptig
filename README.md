@@ -4,7 +4,7 @@
   **Rezeptig** is a simple LaTeX template for your recipe book.
 
   [![GitHub Release](https://img.shields.io/github/v/release/simonsuska/rezeptig?color=EEEEEE)](https://github.com/simonsuska/rezeptig/releases)
-  [![Static Badge](https://img.shields.io/badge/xelatex-2023-important?style=flat&color=EEEEEE)](https://swift.org)
+  [![Static Badge](https://img.shields.io/badge/xelatex-2023-important?style=flat&color=EEEEEE)]()
   [![GitHub License](https://img.shields.io/github/license/simonsuska/rezeptig)](https://github.com/simonsuska/rezeptig/blob/main/LICENSE)
 </div>
 

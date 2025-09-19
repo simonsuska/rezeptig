@@ -6,7 +6,7 @@
 
 <div id="in_general"/>
 
-## 🎯 In General
+## 💭 In General
 
 Rezeptig consists of three .tex-files: "recipebook", "recipe_env", and 
 "recipe_bp".
@@ -24,7 +24,7 @@ the Makefile.
 
 <div id="creating_new_recipes"/>
 
-## 🎯 Creating New Recipes
+## ✏️ Creating New Recipes
 
 Creating a new recipe involves the `make new` target. This always creates a new
 recipe file in the "recipes" folder and copies the blueprint from "recipe_bp" 
@@ -70,7 +70,7 @@ in the recipe book. **Just don't spam `make new`!** 😇
 
 <div id="building_the_template"/>
 
-## 🎯 Building the Template
+## 🏗️ Building the Template
 
 Building the recipe book includes the `make build` target, although specifying 
 the target is optional.

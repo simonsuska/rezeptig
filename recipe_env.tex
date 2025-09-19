@@ -1,0 +1,53 @@
+\NewDocumentEnvironment{recipe}{m m m m m m m m}{%
+  	% Occasions
+	\begin{center}
+		\normalsize\textit{#1}
+	\end{center}
+
+	\vspace{0.6cm}\raggedright
+
+	% Recipe title (the width of the parbox (9cm) can be adjusted to 
+	% force a line break in the recipe title)
+	\begin{minipage}{0.75\linewidth}%
+		\parbox{9cm}{\raggedright \nohyphens{\recipetitle{#2}{#3}}}
+	\end{minipage}
+	\hfill%
+	% Meal option (none, veggie or vegan)
+	\begin{minipage}{0.2\linewidth}
+		#4
+		\vspace{-4mm}
+	\end{minipage}
+
+	\vspace{4mm}
+
+	\begin{sf-mono}
+		% Ingredients
+		\begin{minipage}{0.625\linewidth}
+			\linedtext{3.1cm}{\txtingredients}
+
+			\vspace{2mm}\linespread{1.3}\selectfont #5
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.31\linewidth}
+			% For Doing
+			\begin{tcolorbox}[recipecard, title=\txtfordoing]
+				\raggedright #6
+			\end{tcolorbox}%
+			\vspace{1.5mm}%
+			% Spices
+			\begin{tcolorbox}[recipecard, title=\txtspices]
+				\raggedright #7
+			\end{tcolorbox}
+			\vspace{-0.5mm}
+			% Categories
+			\begin{center}
+				#8
+			\end{center}
+		\end{minipage}%
+	\end{sf-mono}
+
+	\vspace{5mm}
+	\linedtext{0.442\linewidth}{\txtmaking}
+
+	\vspace{2mm}
+}{}

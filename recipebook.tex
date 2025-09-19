@@ -1,0 +1,216 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{fontspec}
+\usepackage{hyphenat}
+\usepackage{pgffor}
+
+\usepackage[a4paper, inner=3.5cm, outer=3cm, top=3.5cm, bottom=3.5cm]{geometry}
+\usepackage{tocloft}
+\usepackage{setspace}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Fonts
+
+\newfontfamily\gc{Graphik Compact}[LetterSpace=10.0]
+\newfontfamily\sfm{SF Mono}
+\newenvironment{sf-mono}{\small\sfm}{}
+
+% Static texts
+
+\newcommand{\txtfordoing}{%
+    \uppercase{For Doing}%
+}
+
+\newcommand{\txttoc}{%
+    Inhaltsverzeichnis%
+}
+
+\newcommand{\txtingredients}{%
+    \uppercase{Ingredients}%
+}%
+
+\newcommand{\txtmaking}{%
+    \uppercase{Making}%
+}
+
+\newcommand{\txtrecipebook}{%
+    \uppercase{Rezeptbuch}%
+}
+
+\newcommand{\txtversion}{%
+    v1.1.0%
+}
+
+\newcommand{\txtspices}{%
+    \uppercase{Spices}%
+}
+
+% Occasions
+
+\newcommand{\txtbreakfast}{%
+    Breakfast%
+}
+
+\newcommand{\txtdessert}{%
+    Dessert%
+}
+
+\newcommand{\txtdinner}{%
+    Dinner%
+}
+
+\newcommand{\txtlunch}{%
+    Lunch%
+}
+
+\newcommand{\txtsnack}{%
+    Snack%
+}
+
+% Meal options
+
+\newcommand{\vegan}{%
+    \includegraphics[scale=0.33]{img/vegan.pdf}\\
+}
+
+\newcommand{\veggie}{%
+    \includegraphics[scale=0.33]{img/veggie.pdf}\\
+}
+
+\newcommand{\none}{%
+    \includegraphics[scale=0.33]{img/spacer.pdf}\\
+}
+
+% Categories
+
+\newcommand{\cold}{%
+    \includegraphics[scale=0.25]{img/snowflake.pdf}%
+}
+
+\newcommand{\drink}{%
+    \includegraphics[scale=0.29]{img/cup.pdf}%
+}
+
+\newcommand{\hot}{%
+    \includegraphics[scale=0.25]{img/fire.pdf}%
+}
+
+\newcommand{\meal}{%
+    \includegraphics[scale=0.25]{img/fork_and_knife.pdf}%
+}
+
+\newcommand{\overnight}{%
+    \includegraphics[scale=0.25]{img/moon.pdf}%
+}
+
+\newcommand{\spread}{%
+    \includegraphics[scale=0.25]{img/spread.pdf}%
+}
+
+% Formatting
+
+\newcommand{\occdiv}{%
+    \ |\ %
+}
+
+\newcommand{\ts}{%
+    \ \ \ %
+}
+
+% Renew commands (configure ToC)
+
+\renewcommand{\contentsname}{\txttoc}
+\renewcommand{\cfttoctitlefont}{\Large\bfseries\gc}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Further new commands
+
+% Both arguments are the recipe title. The first argument is used in the recipe 
+% itself, the second argument in the table of contents.
+\newcommand{\recipetitle}[2]{%
+    \phantomsection
+    \Large\uppercase{\gc\textbf{#1}}%
+    \addcontentsline{toc}{section}{\normalfont{#2}}%
+}
+
+% Draw lines to the right and left of the text. Used for "ingredients" and 
+% "making". The first argument is the length of the lines, the second argument 
+% is the text.
+\newcommand{\linedtext}[2]{%
+    \noindent\rule{#1}{3pt}%
+    \begin{sf-mono}
+        \textbf{#2}%
+    \end{sf-mono}
+    \rule{#1}{3pt}%
+}
+
+% Further Configs
+
+% Card with black header used for "for doing" and "spices".
+\tcbset{
+    recipecard/.style={
+        colback=white,
+        colframe=black,
+        boxrule=1.5pt,
+        fonttitle=\sfm\bfseries,
+        coltitle=white,
+        colbacktitle=black,
+        halign title=center,
+        left=1mm,
+        right=1mm
+    }
+}
+
+% Document
+
+\begin{document}
+    \pagenumbering{gobble}
+
+    % Title page
+
+    \begin{titlepage}
+        \begin{center}
+            \vspace*{\fill}
+            \includegraphics[scale=0.67]{img/fork_and_knife.pdf}\\
+            \vspace*{0.8cm}
+            \begin{LARGE}
+                \gc\textbf{\txtrecipebook}\\
+            \end{LARGE}
+            \vspace*{0.5cm}
+            \begin{large}
+                \txtversion
+            \end{large}
+            \vspace*{\fill}
+        \end{center}
+    \end{titlepage}
+
+    % Date page
+
+    \newpage
+    \begin{raggedright}
+        \vspace*{\fill}
+        \begin{sf-mono}
+            v1.0.0-final: \ Apr 23, 2023\\
+            v1.1.0-draft: \ Mar 01, 2025\\
+            v1.1.0-final: \ Sep 19, 202{\raisebox{0pt}[1pt][2pt]{\colorbox{black}{\makebox[1pt]{\textcolor{white}{5}}}}}\\
+        \end{sf-mono}
+    \end{raggedright}
+    \newpage
+
+    % ToC
+
+    \tableofcontents
+    \newpage\pagenumbering{arabic}
+
+    % Recipes
+
+    \input{recipe_env.tex}
+
+    %RCPEND
+\end{document}
